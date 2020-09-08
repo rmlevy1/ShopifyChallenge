@@ -10,16 +10,16 @@ C. AOV = $302.58 \
 Average Sales per Shoe Seller in the month of March = $15,089 \
 Total Sales done by Shoe Sellers in the month of March = $1,493,840.00 \
 Below are images of the distribution of sales per seller in the Month of March, as well as the top 10 sellers and bottom 10 sellers.\
-<img src="Images/Hist.png" width="300">
-<img src="Images/Top10.png" width="300">
-<img src="Images/Bot10.png" width="300">
+<img src="Images/Hist.png" width="400">
+<img src="Images/Top10.png" width="400">
+<img src="Images/Bot10.png" width="400">
 
 
 ### Question 2
 
 A. How many orders were shipped by Speedy Express in total? \
 Answer = 54 \
-SQL QUERY --> SELECT COUNT(*) FROM Orders WHERE SHIPPERID = 1; \
+SQL QUERY --> SELECT COUNT(*) FROM Orders WHERE SHIPPERID = 1; 
 
 B. What is the last name of the employee with the most orders? \
 Answer = Peacock with 40 orders. \
