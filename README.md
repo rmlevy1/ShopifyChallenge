@@ -24,10 +24,44 @@ SQL QUERY --> SELECT COUNT(*) FROM Orders WHERE SHIPPERID = 1; \
 B. What is the last name of the employee with the most orders? \
 Answer = Peacock with 40 orders. \
 SQL Query: \
-SELECT Employees.LastName, COUNT(*) 
->   FROM Orders \
+SELECT Employees.LastName, COUNT(\*)  \
+FROM Orders \
     INNER JOIN Employees \
     ON Orders.EmployeeID = Employees.EmployeeID \
     GROUP BY Employees.LastName \
     ORDER BY COUNT(*) DESC; \
+
+C. What product was ordered the most by customers in Germany? \
+Answer = Boston Crab Meat \
+Ideal SQL CODE: 
+SELECT Products.ProductName, Products.ProductID, SUM(Quantity) \
+FROM OrderDetails \
+INNER JOIN Products ON OrderDetails.ProductID = Products.ProductID \
+INNER JOIN Orders ON Orders.OrderID = OrderDetails.OrderID \
+INNER JOIN Customers ON Customers.CustomerID = Orders.CustomerID \
+GROUP BY Products.ProductName, Products.ProductID \
+ORDER BY SUM(Quantity) DESC \
+WHERE Customers.Country = 'Germany'; 
+
+Actual SQL Code: 
+
+SELECT Customers.CustomerID, OrderID 
+FROM Customers \
+INNER JOIN Orders ON Customers.CustomerID = Orders.CustomerID \
+WHERE Country = 'Germany'; 
+
+SELECT ProductID, SUM(Quantity) \
+FROM OrderDetails \
+WHERE OrderID = 10391 OR OrderID = 10363 OR OrderID = 10337 OR OrderID = 10396 OR OrderID = 10267 OR OrderID = 10342 OR OrderID = 10323 OR OrderID = 10325 OR OrderID = 10284 OR OrderID = 10343 OR OrderID = 10279 OR OrderID = 10277 OR OrderID = 10407 OR OrderID = 10418 Or OrderID = 10273 OR OrderID = 10361 OR OrderID = 10285 OR OrderID = 10313 OR OrderID = 10286 OR OrderID = 10345 OR OrderID = 10438 OR OrderID = 10356 OR OrderID = 10301 OR OrderID = 10348 OR OrderID = 10312
+GROUP BY ProductID \
+ORDER BY SUM(Quantity) DESC; 
+
+SELECT ProductName \
+FROM Products \
+WHERE ProductID = 40;
+
+
+
+
+
 
